@@ -7,7 +7,7 @@ This project is meant to extract data stored in a SQLite database in order to ru
 ## Results of Statistical Analysis for the Months of June and December
 June        |December
 :-------------------------:|:-------------------------:
-![June_Analysis](https://user-images.githubusercontent.com/89175578/155627810-1eaeffde-1c42-46fb-8ab3-bf6fc1c0e222.png)|  december screenshot
+![June_Analysis](https://user-images.githubusercontent.com/89175578/155627810-1eaeffde-1c42-46fb-8ab3-bf6fc1c0e222.png)|  ![December_Analysis](https://user-images.githubusercontent.com/89175578/155627855-88e55e87-efef-4c23-8ba6-caccb6ee025e.png)
 
 - June has higher minimum, average, and maximum temperatures than December.
 - June has a smaller standard deviation than December.
