@@ -10,7 +10,7 @@ from sqlalchemy import create_engine, func
 #import dependencies for flask
 from flask import Flask, jsonify
 
-engine = create_engine("sqlite:///hawaii.sqlite") #this allows us to access the sqlite database
+engine = create_engine("sqlite:///hawaii.sqlite", connect_args={"check_same_thread": False}) #this allows us to access the sqlite database
 Base = automap_base() #reflect the database into our classes
 Base.prepare(engine, reflect=True)
 
@@ -28,12 +28,12 @@ app = Flask(__name__)
 def welcome():
     return(
     '''
-    Welcome to the Climate Analysis API!
-    Available Routes: 
-    /api/v1.0/precipitation
-    /api/v1.0/stations
-    /api/v1.0/tobs
-    /api/v1.0/temp/start/end
+    Welcome to the Climate Analysis API! <br/>
+    Available Routes: <br/>
+    /api/v1.0/precipitation <br/>
+    /api/v1.0/stations <br/>
+    /api/v1.0/tobs <br/>
+    /api/v1.0/temp/start/end <br/>
     ''')
 
 @app.route("/api/v1.0/precipitation")
@@ -67,12 +67,12 @@ def stats(start = None, end = None):
     
     if not end:
         results = session.query(*sel).\
-            filter(Measurement.date >= start).all()
-        temps = list(np.ravel(results))
-        return jsonify(temps=temps)
+            filter(Measurement.date >= start).all() # query the database using the list that we just made
+        temps = list(np.ravel(results)) # unravel the results into a 1D array and convert them to a list
+        return jsonify(temps=temps) # jsonify and return the results # (*sel) indicates there will be multiple results for our query: min,avg, and max
     
     results = session.query(*sel).\
         filter(Measurement.date >= start).\
-        filter(Measurement.date <= end).all()
+        filter(Measurement.date <= end).all() 
     temps = list(np.ravel(results))
     return jsonify(temps=temps)                                             
